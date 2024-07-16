@@ -1,0 +1,27 @@
+{
+    "lr": {
+        "C": 0.08858667904100823,
+        "penalty": "l1"
+    },
+    "dt": {
+        "criterion": "entropy",
+        "max_depth": 10,
+        "min_samples_leaf": 10,
+        "min_samples_split": 2
+    },
+    "rf": {
+        "bootstrap": false,
+        "max_depth": 30,
+        "min_samples_leaf": 1,
+        "min_samples_split": 2,
+        "n_estimators": 200
+    },
+    "xgb": {
+        "colsample_bytree": 0.9,
+        "gamma": 0.2,
+        "learning_rate": 0.2,
+        "max_depth": 9,
+        "n_estimators": 300,
+        "subsample": 0.8
+    }
+}
