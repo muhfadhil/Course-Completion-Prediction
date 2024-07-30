@@ -1,1 +1,7 @@
-.venv
+# Python virtual environment
+.venv 
+
+# Byte-compiled
+__pychace__/
+*.py[cod]
+*$py.class
