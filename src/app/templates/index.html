@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Course Completion Prediction</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+  </head>
+
+  <body>
+    <div class="container">
+      <h1>Course Completion Prediction</h1>
+      <form id="data-input-form" action="/" method="POST">
+        <div class="form-input">
+          <div class="form-row">
+            <label for="course-category">Course Category:</label>
+            <select id="course-category" name="course-category" required="required">
+              <option value="Arts">Arts</option>
+              <option value="Business">Business</option>
+              <option value="Health">Health</option>
+              <option value="Programming">Programming</option>
+              <option value="Science">Science</option>
+            </select>
+          </div>
+          <div class="form-row">
+            <label for="time-spent">Time Spent on Course (hours):</label>
+            <input type="number" id="time-spent" name="time-spent" min="0" max="100" step="0.01" required="required">
+          </div>
+          <div class="form-row">
+            <label for="videos-watched">Number of Videos Watched:</label>
+            <input type="number" id="videos-watched" name="videos-watched" min="0" max="100" required="required">
+          </div>
+          <div class="form-row">
+            <label for="quizzes-taken">Number of Quizzes Taken:</label>
+            <input type="number" id="quizzes-taken" name="quizzes-taken" min="0" max="100" required="required">
+          </div>
+          <div class="form-row">
+            <label for="quiz-scores">Quiz Scores:</label>
+            <input type="number" id="quiz-scores" name="quiz-scores" step="0.01" min="0" max="100" required="required">
+          </div>
+          <div class="form-row">
+            <label for="completion-rate">Completion Rate:</label>
+            <input type="number" id="completion-rate" name="completion-rate" min="0" max="100" step="0.01" required="required">
+          </div>
+          <div class="form-row">
+            <label for="device-type">Device Type:</label>
+            <select id="device-type" name="device-type" required="required">
+              <option value="0">Desktop</option>
+              <option value="1">Mobile</option>
+            </select>
+          </div>
+          <div class="form-row model-choice">
+            <label for="model-choice">Model:</label>
+            <select id="model-choice" name="model-choice" required="required">
+              <option value="lr">Logistic Regression</option>
+              <option value="dt">Decision Tree</option>
+              <option value="rf">Random Forest</option>
+              <option value="xgb">XGBoost</option>
+            </select>
+          </div>
+        </div>
+
+        <div class="form-submit">
+          <button type="submit">Submit</button>
+        </div>
+      </form>
+
+      {% if prediction %}
+        <div id="submission-result">
+          User is Predicted to
+          {{ prediction }}
+          The Course
+        </div>
+        <table id="input-values-table">
+          <tr>
+            <th>Model</th>
+            <td>{{ model }}</td>
+          </tr>
+          <tr>
+            <th>Course Category</th>
+            <td>{{ course_category }}</td>
+          </tr>
+          <tr>
+            <th>Time Spent on Course</th>
+            <td>{{ time_spent }}
+              hours</td>
+          </tr>
+          <tr>
+            <th>Number of Videos Watched</th>
+            <td>{{ videos_watched }}</td>
+          </tr>
+          <tr>
+            <th>Number of Quizzes Taken</th>
+            <td>{{ quizzes_taken }}</td>
+          </tr>
+          <tr>
+            <th>Quiz Scores</th>
+            <td>{{ quiz_scores }}</td>
+          </tr>
+          <tr>
+            <th>Completion Rate</th>
+            <td>{{ completion_rate }}</td>
+          </tr>
+          <tr>
+            <th>Device Type</th>
+            <td>{{ device_type }}</td>
+          </tr>
+        </table>
+      {% endif %}
+    </div>
+
+  </body>
+
+</html>
